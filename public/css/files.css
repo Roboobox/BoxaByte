@@ -1,0 +1,12 @@
+#drop-file {
+  height: 203px;
+  cursor: pointer;
+  border: 1px #cbd5e0 dashed;
+  margin-bottom: 15px;
+}
+#drop-file:hover, #drop-file.drag {
+  border: 2px #cbd5e0 dashed;
+  font-weight: bold;
+}
+
+/*# sourceMappingURL=files.css.map */

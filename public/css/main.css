@@ -1,0 +1,57 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  background-color: #f6f6f6 !important;
+}
+
+header nav {
+  box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.2) !important;
+}
+header .header-line {
+  height: 3px;
+  background-color: #2563eb;
+  width: 100%;
+}
+header .navbar-brand {
+  font-size: 40px;
+  padding: 0;
+}
+
+body.center main.container {
+  height: 100%;
+}
+
+.center-content {
+  width: 100%;
+  background-color: white;
+  border-radius: 15px;
+  padding: 25px;
+}
+
+body.home .content {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
+}
+body.home .content .content-icon {
+  display: inline-block;
+  height: 60px;
+  width: 60px;
+  text-align: center;
+  border-radius: 10px;
+  background-color: #1a202c;
+}
+body.home .content .content-icon i {
+  color: white;
+  text-align: center;
+  line-height: 60px;
+  font-size: 25px;
+}
+body.home .content-feature div {
+  vertical-align: middle;
+}
+
+/*# sourceMappingURL=main.css.map */
