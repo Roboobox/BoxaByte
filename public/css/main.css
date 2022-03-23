@@ -10,6 +10,10 @@ body {
 header nav {
   box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.2) !important;
 }
+header nav .navbar-collapse i {
+  width: 18px;
+  text-align: center;
+}
 header .header-line {
   height: 3px;
   background-color: #2563eb;
@@ -21,7 +25,7 @@ header .navbar-brand {
 }
 
 body.center main.container {
-  height: 100%;
+  height: 92%;
 }
 
 .center-content {
@@ -52,6 +56,115 @@ body.home .content .content-icon i {
 }
 body.home .content-feature div {
   vertical-align: middle;
+}
+
+body.rpi .content, body.notepad .content, body.files .content {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
+}
+
+body.rpi .content i {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+}
+body.rpi .content ul li a.active {
+  background-color: #2563eb;
+  border-radius: 5px;
+  color: white !important;
+}
+body.rpi .panel-card {
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+}
+body.rpi .panel-card .card-text {
+  vertical-align: middle;
+  line-height: 20px;
+}
+body.rpi .panel-card .icon {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  line-height: 43px;
+  font-size: 22px;
+  vertical-align: middle;
+  border: 3px solid white;
+}
+body.rpi .panel-card.error {
+  background-color: #FF6978;
+}
+body.rpi .panel-card.info {
+  background-color: #2563eb;
+}
+body.rpi .panel-card.normal {
+  background-color: #f9c027;
+}
+body.rpi table thead {
+  border-bottom: none;
+  background-color: #f1f1f1;
+}
+body.rpi table thead th {
+  border-bottom: none;
+}
+body.rpi table tbody {
+  border-top: none !important;
+}
+body.rpi table th, body.rpi table td {
+  padding: 0.7rem 0.7rem;
+}
+body.rpi table .log_long {
+  max-width: 300px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+body.rpi .label {
+  border-radius: 5px;
+  color: white;
+  text-align: center;
+  padding: 2px 5px;
+}
+body.rpi .label.info-label {
+  background-color: #2563eb;
+}
+body.rpi .label.error-label {
+  background-color: #FF6978;
+}
+body.rpi .label.normal-label {
+  background-color: #f9c027;
+}
+body.rpi .pagination .page-item:not(.active) .page-link {
+  color: #1a202c;
+}
+
+body.notepad .note-title {
+  color: #4f4f4f;
+}
+body.notepad textarea.note {
+  margin-top: 10px;
+  border: 1px solid #c3c3c3;
+  border-radius: 3px;
+  height: 500px;
+}
+body.notepad textarea.note:focus {
+  outline: none;
+}
+
+body.files .file {
+  padding: 15px;
+  border: 1px solid #e5e5e5;
+  box-shadow: rgba(0, 0, 0, 0.16) 0 1px 4px;
+  border-radius: 5px;
+}
+body.files .file .file-icon i {
+  font-size: 45px;
+  color: #2563eb;
+}
+body.files .file .file-opener {
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=main.css.map */

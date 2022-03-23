@@ -9,3 +9,15 @@
     }
 }
 
+.tooltip-inner {
+    max-width: 350px;
+    hr {
+        margin: 5px;
+    }
+    .file {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+}
+

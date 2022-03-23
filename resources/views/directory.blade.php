@@ -14,7 +14,18 @@
                         <i class="fa-solid fa-file-arrow-down fs-1"></i>
                         <div class="mt-2 fw-bold">Download file/s</div>
                         <div class="text-muted">Created at: {{ $directory->created_at }}</div>
-                        <div class="text-muted">Expires at: {{ $directory->expiration }}</div>
+                        <div class="text-muted">Expires at: {{ $directory->expiration ?? 'No expiration' }}</div>
+                        <div class="text-muted">
+                            Contents: {{ $directory->size }}, {{ $directory->file_count }} file{{ $directory->file_count > 1 ? 's' : '' }}
+                            <i class="fa-solid fa-folder-open" id="files_tooltip" data-bs-html="true"
+                               data-bs-toggle="tooltip"
+                               data-bs-placement="right"
+                               title="
+                               @foreach($directory->files as $file)
+                               <div class='file'>{{ $file->name }}{{ !$loop->last ? '<hr>' : '' }}</div>
+                               @endforeach
+                               "></i>
+                        </div>
                         <form id="delete_dir_form" style="display: none;" method="POST" action="{{ route('delete-dir', ['directory' => $directory->hash]) }}">
                             @csrf
                         </form>

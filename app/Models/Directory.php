@@ -14,5 +14,12 @@ class Directory extends Model
         'path',
         'expiration',
         'deleted',
+        'user_id',
+        'size',
     ];
+
+    public function files()
+    {
+        return $this->hasMany(File::class);
+    }
 }

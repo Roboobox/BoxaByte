@@ -13,6 +13,7 @@ class DirectoryController extends Controller
 {
     public function index(Directory $directory) {
         if (!$directory->deleted && !(now()->greaterThan(Carbon::parse($directory->expiration)))) {
+            $directory->load('files');
             return view('directory', ['directory' => $directory]);
         } else if (!$directory->deleted && now()->greaterThan(Carbon::parse($directory->expiration))) {
             // Delete expired directory

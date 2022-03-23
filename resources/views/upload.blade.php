@@ -25,22 +25,28 @@
                         </div>
                         <div class="mb-3 text-center">
                             <div>Save files for:</div>
-                            <div class="form-check-inline">
+                            <div class="form-check-inline mb-2">
                                 <input class="form-check-input" type="radio" name="radioExpire" id="radioExpire1" value="1" checked>
                                 <label class="form-check-label" for="radioExpire1">
                                     1 hour
                                 </label>
                             </div>
-                            <div class="form-check-inline">
+                            <div class="form-check-inline mb-2">
                                 <input class="form-check-input" type="radio" name="radioExpire" id="radioExpire2" value="24">
                                 <label class="form-check-label" for="radioExpire2">
                                     24 hours
                                 </label>
                             </div>
-                            <div class="form-check-inline">
+                            <div class="form-check-inline mb-2">
                                 <input class="form-check-input" type="radio" name="radioExpire" id="radioExpire3" value="48">
                                 <label class="form-check-label" for="radioExpire3">
                                     48 hours
+                                </label>
+                            </div>
+                            <div class="form-check-inline mb-2">
+                                <input class="form-check-input" type="radio" name="radioExpire" id="radioExpire4" value="0">
+                                <label class="form-check-label" for="radioExpire4">
+                                    Forever
                                 </label>
                             </div>
                             @error('radioExpire')

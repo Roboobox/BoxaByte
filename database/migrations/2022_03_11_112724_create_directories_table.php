@@ -17,10 +17,13 @@ class CreateDirectoriesTable extends Migration
             $table->id();
             $table->string('hash', 20)->unique();
             $table->string('path');
-            $table->dateTime('expiration');
+            $table->dateTime('expiration')->nullable();
             $table->mediumInteger('file_count')->unsigned()->default(0);
+            $table->string('size', 10)->default("0MB");
             $table->boolean('deleted')->default(false);
             $table->timestamps();
+
+            $table->foreignId('user_id')->constrained('users');
         });
     }
 

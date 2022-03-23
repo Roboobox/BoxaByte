@@ -9,4 +9,16 @@
   font-weight: bold;
 }
 
+.tooltip-inner {
+  max-width: 350px;
+}
+.tooltip-inner hr {
+  margin: 5px;
+}
+.tooltip-inner .file {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
 /*# sourceMappingURL=files.css.map */
