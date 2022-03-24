@@ -1,4 +1,4 @@
-<x-layout bodyClass="notepad">
+<x-layout bodyClass="notepad" title="Notepad - Text storage and sharing">
     <x-slot name="scripts">
         <script src="{{ asset('js/notes.js') }}" defer></script>
     </x-slot>
@@ -6,6 +6,7 @@
         <div class="h-100 row gx-5">
             <div class="col-sm-3 mt-5">
                 <div class="content p-4 ps-3">
+                    @if($notepad->user_id === Auth::user()->id)
                     <div class="text-muted fw-bold mb-2" id="color_label"><i class="fa-solid fa-brush"></i>
                         Color
                         <span class="loading" style="display: none">
@@ -21,7 +22,7 @@
                     <hr>
                     <div class="text-muted fw-bold mb-2"><i class="fa-solid fa-note-sticky"></i> Note</div>
                     <div class="note-picker mb-4">
-                        @if($notepad->hash != 'default')
+                        @if(!$notepad->is_default)
                         <div class="mb-3">
                             <label for="noteName" class="form-label">Current name:</label>
                             <input type="text" id="noteName" class="form-control mb-2" value="{{ $notepad->name }}">
@@ -55,10 +56,14 @@
                             </form>
                         </div>
                     </div>
-                    @if($notepad->hash != 'default')
+                    @endif
+                    @if(!$notepad->is_default)
+                    @if($notepad->user_id === Auth::user()->id)
                     <hr>
+                    @endif
                     <div class="text-muted fw-bold mb-2"><i class="fa-solid fa-toolbox"></i> Options</div>
                     <div class="option-picker">
+                        @if($notepad->user_id === Auth::user()->id)
                         <div class="row">
                             <div class="col mb-3">
                                 <button class="btn btn-success dropdown-toggle w-100"
@@ -70,10 +75,8 @@
                                     <li><button class="dropdown-item share-btn" data-time="1">Share for 1 hour</button></li>
                                     <li><button class="dropdown-item share-btn" data-time="24">Share for 24 hours</button></li>
                                     <li><button class="dropdown-item share-btn" data-time="168">Share for 1 week</button></li>
-                                    @if ($shared)
                                     <li><hr class="dropdown-divider"></li>
-                                    <li><button class="dropdown-item" data-time="0">Stop sharing</button></li>
-                                    @endif
+                                    <li><button class="dropdown-item share-btn" data-time="-1">Stop sharing</button></li>
                                 </ul>
                             </div>
                             <div class="col">
@@ -83,9 +86,10 @@
                                 <button id="delete_note" class="text-nowrap btn btn-danger w-100"><i class="fa-solid fa-trash-can"></i> Delete</button>
                             </div>
                         </div>
-                        <div class="row">
-                            <span class="d-none" id="shared_until_label">Shared until:</span>
-                            <div class="text-muted d-none" id="shared_until"></div>
+                        @endif
+                        <div class="row mt-2">
+                            <span id="shared_until_label">Shared until:</span>
+                            <div class="text-muted" id="shared_until">{{ !$shared || !$notepad->shared_until ? 'Not shared' : $notepad->shared_until}}</div>
                         </div>
                     </div>
                     @endif
@@ -95,6 +99,7 @@
                 <div class="content p-4">
                     <h3 class="note-title"><i class="fa-solid fa-note-sticky"></i> <span id="note_title_text">{{ $notepad->name }}</span></h3>
                     <textarea id="notepad" style="background-color: {{ $notepad->bg_color }}; color: {{ $notepad->txt_color }};" class="w-100 p-3 note">{{ $notepad->content ?? '' }}</textarea>
+                    @if($notepad->user_id === Auth::user()->id)
                     <div class="d-flex mt-2 align-items-center">
                         <button id="saveNote" class="btn btn-primary">
                             <span class="normal"> <i class="fa-solid fa-floppy-disk"></i> Save</span>
@@ -102,6 +107,7 @@
                         </button>
                         <div class="notepad-status fw-bold ms-2" style="display: none"></div>
                     </div>
+                    @endif
                     <input type="hidden" value="{{ route('notepad-update') }}" id="notepad_update">
                     <input type="hidden" value="{{ $notepad->hash }}" id="notepad_key">
                 </div>

@@ -28,11 +28,42 @@ $(function() {
         }
     });
 
+    $('ul .share-btn').on('click', function (e) {
+        shareNote($(this).data('time'));
+    })
+
     $('.notepad .share-btn').on('click', function () {
 
     });
 });
 
+function shareNote(time)
+{
+    $('#shared_until').html('<i class="fa-spin fa-solid fa-circle-notch"></i>');
+    $.ajax({
+        url : url,
+        method: 'POST',
+        dataType: "json",
+        headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+        data: {
+            share_time: time,
+            key: key
+        },
+        success : function (result) {
+            // Show message and hide loading
+            if (result['status'] === 'success') {
+                $('#shared_until').text(result['shared_until']);
+            } else {
+                $('#shared_until').text('Sharing failed, try again');
+            }
+
+        },
+        error: function()
+        {
+            $('#shared_until').text('Sharing failed, try again');
+        }
+    });
+}
 
 function changeColors()
 {

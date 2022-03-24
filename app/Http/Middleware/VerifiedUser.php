@@ -21,8 +21,10 @@ class VerifiedUser
         {
             return $next( $request );
         } else if (Auth::user()) {
+            app('redirect')->setIntendedUrl($request->url());
             return redirect()->route('verify');
         }
+        app('redirect')->setIntendedUrl($request->url());
         return redirect()->route('login');
     }
 }

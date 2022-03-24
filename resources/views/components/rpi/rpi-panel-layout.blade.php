@@ -1,4 +1,4 @@
-<x-layout bodyClass="rpi">
+<x-layout bodyClass="rpi" title="RPI Discord Log panel">
     <x-slot name="main">
         <div class="h-100 row gx-5">
             <div class="col-lg-3 mt-5">

@@ -1,4 +1,4 @@
-<x-layout bodyClass="directory center">
+<x-layout bodyClass="directory center" title="File download">
     <x-slot name="links">
         <link rel="stylesheet" href="{{ asset('css/files.css') }}">
     </x-slot>
@@ -35,8 +35,8 @@
                     </div>
                     <div class="text-center">
                         <input type="hidden" id="copy" value="{{ route('directory', ['directory' => $directory->hash]) }}">
-                        <button class="btn fw-bold btn-success w-50 mb-3" onclick="copyToClipboard('#copy')">Copy link <i class="fa-solid fa-link"></i></button>
-                        <a class="btn fw-bold btn-primary w-75" href="{{ route('download-zip', ['directory' => $directory->hash]) }}">Download ZIP <i class="fa-solid fa-file-zipper"></i></a>
+                        <button id="copy_btn" class="btn fw-bold btn-success w-50 example-popover" onclick="copyToClipboard('#copy')" data-bs-toggle="tooltip" data-bs-placement="right" title="Link copied">Copy link <i class="fa-solid fa-link"></i></button>
+                        <a class="btn fw-bold btn-primary w-75 mt-3" href="{{ route('download-zip', ['directory' => $directory->hash]) }}">Download ZIP <i class="fa-solid fa-file-zipper"></i></a>
                         @if($directory->file_count < 2)
                         <a class="btn fw-bold btn-primary w-75 mt-2" href="{{ route('download', ['directory' => $directory->hash]) }}">Download file <i class="fa-solid fa-arrow-down"></i></a>
                         @endif

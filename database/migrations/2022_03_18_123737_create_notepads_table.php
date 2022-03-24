@@ -16,6 +16,7 @@ class CreateNotepadsTable extends Migration
         Schema::create('notepads', function (Blueprint $table) {
             $table->id();
             $table->string('hash', 20)->unique();
+            $table->boolean('is_default')->default(false);
             $table->string('name');
             $table->text('content')->nullable();
             $table->string('bg_color', 10)->default('#ffffff');

@@ -4,6 +4,7 @@ html, body {
 
 body {
   min-height: 100vh;
+  position: relative;
   background-color: #f6f6f6 !important;
 }
 
@@ -24,8 +25,20 @@ header .navbar-brand {
   padding: 0;
 }
 
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.home .header-extended {
+  height: 500px;
+  background-color: #0abcf9;
+  background-image: linear-gradient(315deg, #0abcf9 0%, #2c69d1 74%);
+}
+
 body.center main.container {
-  height: 92%;
+  height: calc(100% - 79px);
 }
 
 .center-content {
@@ -35,6 +48,10 @@ body.center main.container {
   padding: 25px;
 }
 
+body.home {
+  height: fit-content;
+  padding-bottom: 60px;
+}
 body.home .content {
   background-color: white;
   border-radius: 15px;
@@ -54,8 +71,14 @@ body.home .content .content-icon i {
   line-height: 60px;
   font-size: 25px;
 }
+body.home .content-feature {
+  transition: 0.2s;
+}
 body.home .content-feature div {
   vertical-align: middle;
+}
+body.home .content-feature:hover {
+  background-color: #f8f8f8;
 }
 
 body.rpi .content, body.notepad .content, body.files .content {
@@ -165,6 +188,12 @@ body.files .file .file-icon i {
 }
 body.files .file .file-opener {
   cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  .home .header-extended {
+    height: 400px;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

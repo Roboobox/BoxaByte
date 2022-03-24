@@ -1,4 +1,4 @@
-<x-layout bodyClass="upload center">
+<x-layout bodyClass="upload center" title="File upload - upload and share files">
     <x-slot name="links">
         <link rel="stylesheet" href="{{ asset('css/files.css') }}">
     </x-slot>

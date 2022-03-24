@@ -1,4 +1,4 @@
-<x-layout bodyClass="verify center">
+<x-layout bodyClass="verify center" title="Verify your account">
     <x-slot name="main">
         <div class="h-100 row align-items-center justify-content-center">
             <div class="col-lg-4 col-sm-11">

@@ -8,6 +8,7 @@ use App\Http\Controllers\MusicCommandController;
 use App\Http\Controllers\MusicLogController;
 use App\Http\Controllers\NotepadController;
 use App\Http\Controllers\UploadController;
+use App\Http\Controllers\VerifyController;
 use App\Http\Middleware\VerifiedUser;
 use Illuminate\Support\Facades\Route;
 
@@ -50,8 +51,6 @@ Route::middleware([VerifiedUser::class])->group(function () {
     Route::get('/rpi/bot-logs/{log:id}', [LogController::class, 'view'])->middleware(['auth'])->name('rpi-bot-log-view');
 });
 
-Route::get('/verify', function () {
-    return view('verify');
-})->middleware('auth')->name('verify');
+Route::get('/verify', [VerifyController::class, 'index'])->middleware('auth')->name('verify');
 
 require __DIR__.'/auth.php';

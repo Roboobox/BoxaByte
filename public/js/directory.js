@@ -1,8 +1,14 @@
+var popover = undefined;
+var tooltip = undefined;
+
 $(function() {
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
     var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl)
     })
+    var exampleTriggerEl = document.getElementById('copy_btn')
+    tooltip = bootstrap.Tooltip.getInstance(exampleTriggerEl);
+    tooltip.disable();
 });
 
 $('#delete_link').on('click', function (e) {
@@ -13,12 +19,15 @@ $('#delete_link').on('click', function (e) {
 })
 
 function copyToClipboard(selector) {
+    tooltip.enable();
+    tooltip.show();
     if (!navigator.clipboard) {
         fallbackClipboard(selector);
         return;
     }
     let text = $(selector).val();
-    navigator.clipboard.writeText(text)
+    navigator.clipboard.writeText(text);
+    tooltip.disable();
 }
 
 function fallbackClipboard(selector) {
@@ -27,5 +36,9 @@ function fallbackClipboard(selector) {
     $temp.val($(selector).val()).select();
     document.execCommand("copy");
     $temp.remove();
+    tooltip.disable();
 }
 
+function showToolTip() {
+
+}

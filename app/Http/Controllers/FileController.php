@@ -12,7 +12,10 @@ class FileController extends Controller
     public function index() {
         $userFileDirectories = Directory::where('user_id', Auth::user()->id)
             ->where('deleted', false)
-            ->where('expiration', '>', Carbon::now())
+            ->where(function ($query) {
+                $query->where('expiration', '>', Carbon::now())
+                    ->orWhereNull('expiration');
+            })
             ->with('files')
             ->get();
         return view('files', ['directories' => $userFileDirectories]);

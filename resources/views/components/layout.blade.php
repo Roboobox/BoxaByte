@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Upload a file</title>
+    <title>{{ $title ?? 'RPI Website' }}</title>
 
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link href="{{ asset('assets/fontawesome/css/all.min.css') }}" rel="stylesheet">
@@ -64,11 +64,16 @@
         </nav>
         <div class="header-line"></div>
     </header>
+    @if(isset($headerExtended))
+    <div class="header-extended">
+        {{ $headerExtended ?? '' }}
+    </div>
+    @endif
     <main class="container">
         {{ $main }}
     </main>
     <footer>
-
+        {{ $footer ?? '' }}
     </footer>
 
 

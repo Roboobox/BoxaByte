@@ -13,15 +13,16 @@ class NotepadController extends Controller
     public function index(Notepad $notepad = null) {
         if (!$notepad) {
             $notepad = Notepad::firstOrCreate([
-                'hash' => 'default'
+                'is_default' => true,
+                'user_id' => Auth::user()->id
             ],
             [
-                'user_id' => Auth::user()->id,
-                'name' => 'Default note'
+                'name' => 'Default note',
+                'hash' => $this->generateNotepadHash()
             ]
             );
         }
-        if ($notepad->user_id === Auth::user()->id || now()->lessThan(Carbon::parse($notepad->shared_until))) {
+        if ($notepad->user_id === Auth::user()->id || (now()->lessThan(Carbon::parse($notepad->shared_until)) && $notepad->shared_until != NULL)) {
             $userNotepads = Notepad::where('user_id', Auth::user()->id)->get();
             $isShared = false;
             if ($notepad->shared_until !== null && now()->lessThan(Carbon::parse($notepad->shared_until ?? now()))) {
@@ -33,7 +34,7 @@ class NotepadController extends Controller
                 'shared' => $isShared
             ]);
         }
-        return view('home');
+        return redirect()->route('home');
     }
 
     public function create(Request $request) {
@@ -54,7 +55,7 @@ class NotepadController extends Controller
     }
 
     public function delete(Notepad $notepad) {
-        if ($notepad->user_id === Auth::user()->id && $notepad->hash != 'default') {
+        if ($notepad->user_id === Auth::user()->id && !$notepad->is_default) {
             if ($notepad->delete()) {
                 return redirect()->route('notepad');
             }
@@ -62,17 +63,14 @@ class NotepadController extends Controller
         return redirect()->back()->withErrors(['general' => 'Something went wrong, try again later!']);
     }
 
-    public function share(Notepad $notepad) {
-        if ($notepad->user_id === Auth::user()->id && $notepad->hash != 'default') {
-
-        }
-    }
-
 
     public function update(Request $request) {
         if ($request->input('key')) {
             $hash = $request->input('key');
-            $notepad = Notepad::where('user_id', Auth::user()->id)->where('hash', $hash)->first();
+            $notepad = Notepad::where('user_id', Auth::user()->id)
+                ->where('hash', $hash)
+                ->where('is_default', false)
+                ->first();
             if (!$notepad) {
                 return response()->json([
                     'status' => 'error'
@@ -106,13 +104,23 @@ class NotepadController extends Controller
             }
             else if ($request->input('share_time')) {
                 $validator = \Validator::make($request->all(), [
-                    'share_time' => 'required|integer|in:1,24,168'
+                    'share_time' => 'required|integer|in:1,24,168,-1'
                 ]);
                 if (!$validator->fails()) {
-                    $sharedUntil = Carbon::now()->addHours((int)$request->input('share_time'));
+                    if ((int)$request->input('share_time') == -1) {
+                        $sharedUntil = Carbon::now()->subSecond();
+                    } else
+                    {
+                        $sharedUntil = Carbon::now()->addHours( (int)$request->input( 'share_time' ) );
+                    }
                     $update->update([
                         'shared_until' => $sharedUntil
                     ]);
+                    if ($sharedUntil <= Carbon::now()) {
+                        $sharedUntil = "Not shared";
+                    } else {
+                        $sharedUntil = $sharedUntil->format('Y-m-d H:i:s');
+                    }
                     if ($update) {
                         return response()->json([
                             'status' => 'success',

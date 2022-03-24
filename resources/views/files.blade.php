@@ -1,4 +1,4 @@
-<x-layout bodyClass="files">
+<x-layout bodyClass="files" title="Your files - explore uploaded files">
     <x-slot name="scripts">
 
     </x-slot>
