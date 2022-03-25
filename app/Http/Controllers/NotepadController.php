@@ -67,10 +67,18 @@ class NotepadController extends Controller
     public function update(Request $request) {
         if ($request->input('key')) {
             $hash = $request->input('key');
-            $notepad = Notepad::where('user_id', Auth::user()->id)
-                ->where('hash', $hash)
-                ->where('is_default', false)
-                ->first();
+
+            if ($request->input('content')) {
+                $notepad = Notepad::where('user_id', Auth::user()->id)
+                    ->where('hash', $hash)
+                    ->first();
+            } else
+            {
+                $notepad = Notepad::where( 'user_id', Auth::user()->id )
+                    ->where( 'hash', $hash )
+                    ->where('is_default', false)
+                    ->first();
+            }
             if (!$notepad) {
                 return response()->json([
                     'status' => 'error'

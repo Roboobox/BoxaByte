@@ -3,7 +3,7 @@ if ($('body').hasClass('auth')) {
     $('#background').css('background-image', 'url("../assets/images/auth/login_' + randImg + '.jpg"');
 }
 
-if ($('body').hasClass('files')) {
+if ($('body').hasClass('files') || $('body').hasClass('admin') ) {
     $('.file .file-opener').on('click', function () {
         let hash = $(this).data('id');
         if ($('.file[data-id="'+hash+'"] .files-container').is(':hidden')) {

@@ -47,15 +47,24 @@
                         @endif
                     </ul>
                     <div class="d-flex">
-                        @if(Auth::user())
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            @if(Auth::user() && Auth::user()->is_admin)
+                            <li class="nav-item">
+                                <a class="nav-link{{Route::is('admin') ? ' active' : ''}}" href="{{ route('admin') }}"><i class="fa-solid fa-screwdriver-wrench"></i> Admin</a>
+                            </li>
+                            @endif
+                            @if(Auth::user())
+                                <li  class="nav-item">
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
 
-                            <button type="submit" class="btn text-muted px-0">
-                                <i class="fa-solid fa-arrow-right-from-bracket"></i> Log Out
-                            </button>
-                        </form>
-                        @else
+                                    <button type="submit" class="btn btn-link text-muted nav-link">
+                                        <i class="fa-solid fa-arrow-right-from-bracket"></i> Log Out
+                                    </button>
+                                </form>
+                                </li>
+                            @else
+                        </ul>
                         <a class="nav-link active text-dark px-0" aria-current="page" href="{{ route('login') }}"><i class="fa-solid fa-arrow-right-to-bracket"></i> Log In</a>
                         @endif
                     </div>

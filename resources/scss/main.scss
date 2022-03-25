@@ -88,7 +88,7 @@ body.home {
     }
 }
 
-body.rpi, body.notepad, body.files {
+body.rpi, body.notepad, body.files, body.admin {
     .content {
         background-color: white;
         border-radius: 15px;
@@ -201,7 +201,7 @@ body.notepad {
     }
 }
 
-body.files {
+body.files, body.admin {
     .file {
         padding: 15px;
         border: 1px solid #e5e5e5;
@@ -215,6 +215,58 @@ body.files {
         }
         .file-opener {
             cursor: pointer;
+        }
+    }
+}
+
+body.admin {
+    .user-container {
+        position: relative;
+        .loading-overlay {
+            display: none;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #e6e6e6;
+            opacity: 0.3;
+        }
+        .form-check-input:focus
+        {
+            outline: none;
+            box-shadow: none;
+            border-color: rgba(0,0,0,.25);
+            &:not(:checked) {
+                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba%280, 0, 0, 0.25%29'/%3e%3c/svg%3e");
+            }
+        }
+        #users_table {
+            thead {
+                th {
+                    font-weight: normal;
+                }
+            }
+
+            tbody {
+                tr {
+                    td {
+                        vertical-align: middle;
+                    }
+                }
+
+                color: #1a202c;
+                border-top: 1px solid #6b7280;
+            }
+
+            .form-check-input {
+                height: 1.5rem;
+                width: 2.75rem;
+                border-radius: 3rem;
+            }
+
+            .verified-check:checked {
+                background-color: #33B67A;
+                border-color: #33B67A;
+            }
         }
     }
 }

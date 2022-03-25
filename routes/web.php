@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DirectoryController;
 use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\FileController;
@@ -49,6 +50,13 @@ Route::middleware([VerifiedUser::class])->group(function () {
     Route::get('/rpi/music-commands', [MusicCommandController::class, 'index'])->middleware(['auth'])->name('rpi-music-cmd');
     Route::get('/rpi/bot-logs', [LogController::class, 'index'])->middleware(['auth'])->name('rpi-bot-logs');
     Route::get('/rpi/bot-logs/{log:id}', [LogController::class, 'view'])->middleware(['auth'])->name('rpi-bot-log-view');
+
+    Route::middleware('admin')->group(function ()
+    {
+        Route::get( '/admin', [AdminController::class, 'index'])->name( 'admin');
+        Route::post( '/admin/verify', [AdminController::class, 'setVerification'])->name( 'admin-verify');
+        Route::post( '/admin/set', [AdminController::class, 'setAdmin'])->name( 'admin-set');
+    });
 });
 
 Route::get('/verify', [VerifyController::class, 'index'])->middleware('auth')->name('verify');
