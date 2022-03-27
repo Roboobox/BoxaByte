@@ -3,8 +3,8 @@
         <script src="{{ asset('js/notes.js') }}" defer></script>
     </x-slot>
     <x-slot name="main">
-        <div class="h-100 row gx-5">
-            <div class="col-sm-3 mt-5">
+        <div class="h-100 row gx-md-5 gx-2">
+            <div class="col-lg-3 mt-5">
                 <div class="content p-4 ps-3">
                     @if($notepad->user_id === Auth::user()->id)
                     <div class="text-muted fw-bold mb-2" id="color_label"><i class="fa-solid fa-brush"></i>
@@ -95,7 +95,7 @@
                     @endif
                 </div>
             </div>
-            <div class="col-sm-9 col-12 mt-5">
+            <div class="col-lg-9 col-12 mt-5">
                 <div class="content p-4">
                     <h3 class="note-title"><i class="fa-solid fa-note-sticky"></i> <span id="note_title_text">{{ $notepad->name }}</span></h3>
                     <textarea id="notepad" style="background-color: {{ $notepad->bg_color }}; color: {{ $notepad->txt_color }};" class="w-100 p-3 note">{{ $notepad->content ?? '' }}</textarea>

@@ -36,6 +36,13 @@ footer {
     width:100%;
 }
 
+.notfound {
+    .nf-title {
+        font-size: 100px;
+
+    }
+}
+
 .home .header-extended {
     height: 500px;
     background-color: #0abcf9;
@@ -88,7 +95,7 @@ body.home {
     }
 }
 
-body.rpi, body.notepad, body.files, body.admin {
+body.rpi, body.notepad, body.files, body.admin, body.notfound {
     .content {
         background-color: white;
         border-radius: 15px;

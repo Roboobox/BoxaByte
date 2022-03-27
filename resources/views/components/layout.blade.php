@@ -36,7 +36,7 @@
                             <a class="nav-link{{Route::is('upload') ? ' active' : ''}}" href="{{ route('upload') }}"><i class="fa-solid fa-file-arrow-up"></i> File Upload</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link{{Route::is('notepad') ? ' active' : ''}}" href="{{ route('notepad') }}"><i class="fa-solid fa-clipboard"></i> Notepad</a>
+                            <a class="nav-link{{Route::is('notepad') ? ' active' : ''}}" href="{{ route('notepad') }}"><i class="fa-solid fa-clipboard"></i> Notepad </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link{{Route::is('rpi-dashboard') ? ' active' : ''}}" href="{{ route('rpi-dashboard') }}"><i class="fa-solid fa-table-columns"></i> RPI Panel</a>
@@ -65,7 +65,6 @@
                                 </li>
                             @else
                         </ul>
-                        <a class="nav-link active text-dark px-0" aria-current="page" href="{{ route('login') }}"><i class="fa-solid fa-arrow-right-to-bracket"></i> Log In</a>
                         @endif
                     </div>
                 </div>
