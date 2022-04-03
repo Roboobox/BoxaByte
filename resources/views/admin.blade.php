@@ -1,4 +1,4 @@
-<x-layout bodyClass="admin" title="Admin panel - user data">
+<x-layout bodyClass="admin" title="{{ config('app.name', 'BoxaByte') }} - Admin panel">
     <x-slot name="scripts">
         <script src="{{ asset('js/admin.js') }}" defer></script>
     </x-slot>
@@ -49,6 +49,7 @@
                     <h5>Active directories</h5>
                     <div class="directory-container mt-4">
                         <div class="row g-3 row-cols-1">
+                        @if(!$directories->isEmpty())
                         @foreach($directories as $directory)
                             <div class="col">
                             <div data-id="{{ $directory->hash }}" class="file d-flex">
@@ -83,6 +84,11 @@
                             </div>
                             </div>
                         @endforeach
+                        @else
+                            <div class="col-12 text-muted">
+                                No currently active directories
+                            </div>
+                        @endif
                         </div>
                     </div>
                 </div>

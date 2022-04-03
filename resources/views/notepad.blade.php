@@ -1,4 +1,4 @@
-<x-layout bodyClass="notepad" title="Notepad - Text storage and sharing">
+<x-layout bodyClass="notepad" title="{{ config('app.name', 'BoxaByte') }} - Notepad">
     <x-slot name="scripts">
         <script src="{{ asset('js/notes.js') }}" defer></script>
     </x-slot>

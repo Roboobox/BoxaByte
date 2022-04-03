@@ -1,4 +1,4 @@
-<x-layout bodyClass="files" title="Your files - explore uploaded files">
+<x-layout bodyClass="files" title="{{ config('app.name', 'BoxaByte') }} - Your uploaded files">
     <x-slot name="scripts">
 
     </x-slot>
@@ -46,7 +46,7 @@
                     </div>
                     @else
                         <div class="row">
-                            <div class="col fs-4 fw-light text-center mt-3">
+                            <div class="col fs-4 fw-light text-center mt-3 text-muted">
                                 <i class="fa-solid fa-file-circle-question fs-1 me-3"></i><br>You currently do not have any active files
                             </div>
                         </div>

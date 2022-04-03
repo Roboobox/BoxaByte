@@ -1,6 +1,8 @@
 <x-auth-layout>
     <x-slot name="main">
-        <h3 class="display-5 text-center mb-3"><i class="fa-brands fa-raspberry-pi"></i> Login</h3>
+        <h3 class="display-5 text-center mb-3 d-flex justify-content-center align-items-center">
+            <img class="me-1" src="{{ asset('assets/images/logo_min.png') }}" height="45" alt="BoxaByte"> Login
+        </h3>
         <form method="post" action="{{ route('login') }}">
             @csrf
             <div class="form-group mb-2">

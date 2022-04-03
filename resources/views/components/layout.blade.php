@@ -17,12 +17,22 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="{{ asset('js/main.js') }}" defer></script>
     {{ $scripts ?? '' }}
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/images/favicons/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/images/favicons/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/images/favicons/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('site.webmanifest') }}">
+    <link rel="mask-icon" href="{{ asset('safari-pinned-tab.svg') }}" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
 </head>
 <body class="{{ $bodyClass ?? '' }}">
     <header class="bg-white">
         <nav class="navbar navbar-expand-lg navbar-light bg-white">
             <div class="container bg-white">
-                <a class="navbar-brand text-primary" href="{{ route('home') }}"><i class="fa-brands fa-raspberry-pi"></i></a>
+                <a class="navbar-brand text-primary" href="{{ route('home') }}">
+                    <img src="{{ asset('assets/images/logo.png') }}" height="65" width="122" alt="BoxaByte">
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>

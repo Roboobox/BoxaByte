@@ -1,9 +1,8 @@
-<x-layout bodyClass="home" title="Home">
+<x-layout bodyClass="home" title="{{ config('app.name', 'BoxaByte') }} - Home">
     <x-slot name="headerExtended">
         <div class="d-flex text-white align-items-center justify-content-center h-100 flex-column">
-            <div class="fs-1 text-uppercase fw-bold">Welcome to the site</div>
+            <div class="fs-1 text-uppercase fw-bold text-center">Welcome to the {{ config('app.name', 'BoxaByte') }}</div>
             <div class="fs-5">It is great to see you!</div>
-
         </div>
     </x-slot>
     <x-slot name="main">

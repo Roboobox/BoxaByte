@@ -1,4 +1,4 @@
-<x-layout bodyClass="directory center" title="File download">
+<x-layout bodyClass="directory center" title="{{ config('app.name', 'BoxaByte') }} - File download">
     <x-slot name="links">
         <link rel="stylesheet" href="{{ asset('css/files.css') }}">
     </x-slot>

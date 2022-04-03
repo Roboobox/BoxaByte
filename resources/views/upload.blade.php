@@ -1,4 +1,4 @@
-<x-layout bodyClass="upload center" title="File upload - upload and share files">
+<x-layout bodyClass="upload center" title="{{ config('app.name', 'BoxaByte') }} - File upload">
     <x-slot name="links">
         <link rel="stylesheet" href="{{ asset('css/files.css') }}">
     </x-slot>
